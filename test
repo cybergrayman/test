@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">Cyber Gray Man</title>
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #333333; /* Dark gray background */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+        header {
+            text-align: center;
+            padding: 50px 0;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #00ff00; /* Accent color for headings */
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+            color: #99cc00; /* Highlight color */
+        }
+        .typing-animation {
+            overflow: hidden;
+            border-right: .15em solid #00ff00; /* Typing cursor color */
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00ff00; }
+        }
+        section {
+            margin: 50px 0;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 2.5em;
+            border-bottom: 2px solid #00ff00; /* Accent color for section titles */
+            padding-bottom: 10px;
+            color: #ffffff;
+        }
+        section h3 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            color: #ffffff;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 5px 0;
+            color: #cccccc;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #00ff00;
+            color: #cccccc;
+        }
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cyber Gray Man</h1>
+            <p><span class="typing-animation mt_typed_text"></span></p> <!-- Added class "mt_typed_text" -->
+        </header>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am passionate about cyber security, Digital Forensics and Incident Response (DFIR), and playing Capture The Flag (CTF) challenges. I continually seek to expand my knowledge and skills in the field. You can find my various certifications on my <a href="https://www.credly.com" target="_blank">Credly page</a>.</p>
+            <h3>Certifications</h3>
+            <ul>
+                <li>GPEN (GIAC Penetration Tester)</li>
+                <li>GCFA (GIAC Certified Forensic Analyst)</li>
+                <li>Pentest+ (CompTIA PenTest+)</li>
+                <li>PCNSA (Palo Alto Networks Certified Network Security Administrator)</li>
+                <li>CEH (Certified Ethical Hacker)</li>
+                <li>CYBEROPS (Cisco Certified CyberOps Associate)</li>
+                <li>CCNA (Cisco Certified Network Associate)</li>
+                <li>CCNP (Cisco Certified Network Professional)</li>
+            </ul>
+            <h3>Contact</h3>
+            <p>Feel free to connect with me on <a href="https://www.linkedin.com/in/shabeeribm" target="_blank">LinkedIn</a>.</p>
+        </section>
+        <footer>
+            &copy; 2024 Cyber Gray Man
+        </footer>
+    </div>
+
+    <!-- Add jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Add the typed text script -->
+    <script>
+        var arr = ['Cyber Security', 'Endpoint Assessment?', 'Email Gateway Assessment?', 'WAF Assessment?', 'Web Assessment?', 'Red Teaming?', 'Penetration Testing?', 'Deception?', 'Application Testing?', 'Reverse Engineering?'];
+
+        // Use jQuery to initialize the typed text effect
+        $(document).ready(function() {
+            $(".mt_typed_text").typed({
+                strings: arr,
+                typeSpeed: 1,
+                backDelay: 2000,
+                loop: true
+            });
+        });
+    </script>
+</body>
+</html>
