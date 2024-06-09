@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="title">Cyber GrayMan</title>
+    <title>Cyber Gray Man</title>
     <style>
         body {
             font-family: 'Roboto Mono', monospace;
@@ -77,33 +77,149 @@
         .typed-section .parent-typed-text {
             font-size: 1.5em;
         }
+        .slider-content {
+            text-align: center;
+            margin-top: 50px;
+            color: #00ff00; /* Matching green color */
+            height: 50px; /* Fixed height to prevent jumping */
+            overflow: hidden; /* Hide overflowing content */
+        }
+        .typed_active {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ff00; /* Matching green color */
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Cyber Gray Man</h1>
-                </header>
-        <div class="typed-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h4 class="parent-typed-text">
-                            <span class="mt_typed-beforetext">Cyber </span>
-                            <span class="mt_typed_text"></span>
-                        </h4>
-                    </div>
-                </div>
-            </div>
+            <h1>Cyber GrayMan</h1>
+        </header>
+        <!-- Your script -->
+        <div class="slider-content">
+            <h2 class="typed_active">Cyber Security Analyst</h2> <!-- Set the longest possible text -->
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            // jQuery plugin for shuffling letters
+            (function ($) {
+                'use strict';
+
+                $.fn.shuffleLetters = function (prop) {
+                    var options = $.extend({
+                        "step": 8, // How many times should the letters be changed
+                        "fps": 25, // Frames Per Second
+                        "text": "", // Use this text instead of the contents
+                        "callback": function () {} // Run once the animation is complete
+                    }, prop);
+
+                    return this.each(function () {
+                        var el = $(this),
+                            str = "";
+
+                        if (el.data('animated')) {
+                            return true;
+                        }
+                        el.data('animated', true);
+
+                        if (options.text) {
+                            str = options.text.split('');
+                        } else {
+                            str = el.text().split('');
+                        }
+
+                        var types = [],
+                            letters = [];
+
+                        for (var i = 0; i < str.length; i++) {
+                            var ch = str[i];
+                            if (ch == " ") {
+                                types[i] = "space";
+                                continue;
+                            } else if (/[a-z]/.test(ch)) {
+                                types[i] = "lowerLetter";
+                            } else if (/[A-Z]/.test(ch)) {
+                                types[i] = "upperLetter";
+                            } else {
+                                types[i] = "symbol";
+                            }
+                            letters.push(i);
+                        }
+
+                        el.html("");
+
+                        (function shuffle(start) {
+                            var i,
+                                len = letters.length,
+                                strCopy = str.slice(0);
+
+                            if (start > len) {
+                                el.data('animated', false);
+                                options.callback(el);
+                                return;
+                            }
+
+                            for (i = Math.max(start, 0); i < len; i++) {
+                                if (i < start + options.step) {
+                                    strCopy[letters[i]] = randomChar(types[letters[i]]);
+                                } else {
+                                    strCopy[letters[i]] = "";
+                                }
+                            }
+
+                            el.text(strCopy.join(""));
+
+                            setTimeout(function () {
+                                shuffle(start + 1);
+                            }, 1000 / options.fps);
+                        })(-options.step);
+                    });
+                };
+
+                function randomChar(type) {
+                    var pool = "";
+                    if (type == "lowerLetter") {
+                        pool = "abcdefghijklmnopqrstuvwxyz0123456789";
+                    } else if (type == "upperLetter") {
+                        pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                    } else if (type == "symbol") {
+                        pool = ",.?/\\(^)![]{}*&^%$#'\"";
+                    }
+
+                    var arr = pool.split('');
+                    return arr[Math.floor(Math.random() * arr.length)];
+                }
+
+                var container = $(".slider-content h2.typed_active");
+
+                container.shuffleLetters();
+
+                function shuffle(text) {
+                    container.shuffleLetters({
+                        text: text
+                    });
+                }
+
+                var arr = ['Cyber Security Analyst', 'Cyber Defender', 'CTF Player', 'SOC Analyst'];
+                var i = 0;
+                if ($(".typed_active").length) {
+                    var interval = setInterval(function () {
+                        shuffle(arr[i++ % arr.length]);
+                    }, 4000);
+                }
+            })(jQuery);
+        </script>
+        <!-- End of your script -->
+
         <section id="about">
             <h2>About Me</h2>
             <p>I am passionate about cyber security, Digital Forensics and Incident Response (DFIR), and playing Capture The Flag (CTF) challenges. I continually seek to expand my knowledge and skills in the field. You can find my various certifications on my <a href="#" target="_blank">Credly page</a>.</p>
             <h3>Certifications</h3>
             <ul>
                 <li>GPEN (GIAC Penetration Tester)</li>
-                <li>GCFA (GIAC Certified Forensic Analyst)</li>
-                <li>Pentest+ (CompTIA PenTest+)</li>
+                <li>GCFA (GIAC Certified Forensic Analyst)</>
+                <li>Pentest+ (CompTIA PenTest+)</li>           
                 <li>PCNSA (Palo Alto Networks Certified Network Security Administrator)</li>
                 <li>CEH (Certified Ethical Hacker)</li>
                 <li>CYBEROPS (Cisco Certified CyberOps Associate)</li>
@@ -114,26 +230,8 @@
             <p>Feel free to connect with me on <a href="#" target="_blank">LinkedIn</a>.</p>
         </section>
         <footer>
-            &copy; 2024 Cyber GrayMan
+            &copy; 2024 Cyber Gray Man
         </footer>
     </div>
-    <!-- Include jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Script for typed text animation -->
-    <script type="text/javascript">
-        var arr = ['Security Analyst?', 'Defender?', 'Security Consultant?', 'Defense Analyst?', 'Threat Intelligence Analyst?'];
-        // Function to display typed text
-        function displayTypedText() {
-            var index = 0;
-            setInterval(function() {
-                $(".mt_typed_text").text(arr[index]);
-                index = (index + 1) % arr.length;
-            }, 2000); // Change the delay as needed (in milliseconds)
-        }
-        // Call the function to start displaying typed text
-        $(document).ready(function() {
-            displayTypedText();
-        });
-    </script>
 </body>
 </html>
